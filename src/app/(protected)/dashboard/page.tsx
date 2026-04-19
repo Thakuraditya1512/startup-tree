@@ -375,7 +375,7 @@ export default function DashboardPage() {
                               {task.status === "done" ? (
                                 <CheckSolid className="w-4 h-4 text-green-500 shrink-0" />
                               ) : (
-                                getTypeIcon((task as UserTask).type)
+                                getTypeIcon(task.type)
                               )}
                               <span className={`text-xs font-bold ${task.status === "done" ? "text-foreground" : "text-muted-foreground"}`}>
                                 {task.title}

@@ -18,30 +18,7 @@ import {
   QuestionMarkCircleIcon,
   ChatBubbleBottomCenterTextIcon
 } from "@heroicons/react/24/solid";
-
-interface Profile {
-  id: string;
-  full_name: string;
-  email: string;
-  role: string;
-  xp: number;
-}
-
-interface Module {
-  id: string;
-  title: string;
-  order: number;
-}
-
-interface UserTask {
-  id: string;
-  title: string;
-  status: string;
-  module_id: string;
-  type: string;
-  content_url?: string;
-  content_body?: string;
-}
+import { Profile, UserTask, Module } from "@/types";
 
 export default function AdminPage() {
   const [users, setUsers] = useState<Profile[]>([]);

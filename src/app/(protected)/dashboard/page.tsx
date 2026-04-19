@@ -375,7 +375,7 @@ export default function DashboardPage() {
                               {task.status === "done" ? (
                                 <CheckSolid className="w-4 h-4 text-green-500 shrink-0" />
                               ) : (
-                                getTypeIcon(task.type)
+                                <ChatBubbleBottomCenterTextIcon className="w-4 h-4 text-gray-500" />
                               )}
                               <span className={`text-xs font-bold ${task.status === "done" ? "text-foreground" : "text-muted-foreground"}`}>
                                 {task.title}
@@ -530,11 +530,11 @@ export default function DashboardPage() {
              <div className="flex items-center justify-between p-6 border-b border-border bg-card">
                <div className="flex items-center gap-3">
                  <div className="w-10 h-10 rounded-xl bg-indigo-600/10 flex items-center justify-center">
-                   {getTypeIcon(selectedTask.type)}
+                   {getTypeIcon((selectedTask as UserTask).type)}
                  </div>
                  <div>
                     <h2 className="text-xl font-extrabold tracking-tight">{selectedTask.title}</h2>
-                    <p className="text-xs text-muted-foreground font-semibold flex items-center gap-1 uppercase tracking-widest">{selectedTask.type} Roadmap Item</p>
+                    <p className="text-xs text-muted-foreground font-semibold flex items-center gap-1 uppercase tracking-widest">{(selectedTask as UserTask).type} Roadmap Item</p>
                  </div>
                </div>
                <button onClick={() => setSelectedTask(null)} className="p-2 rounded-xl hover:bg-muted transition-colors">
@@ -544,7 +544,7 @@ export default function DashboardPage() {
 
              {/* Content Area */}
              <div className="p-6 overflow-y-auto max-h-[70vh]">
-               {selectedTask.type === 'video' ? (
+               {(selectedTask as UserTask).type === 'video' ? (
                  <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-inner border border-border/50 mb-6">
                    {getYouTubeEmbedUrl(selectedTask.content_url) ? (
                      <iframe 
@@ -557,7 +557,7 @@ export default function DashboardPage() {
                      <div className="w-full h-full flex items-center justify-center text-muted-foreground">Invalid Video URL</div>
                    )}
                  </div>
-               ) : selectedTask.type === 'link' ? (
+               ) : (selectedTask as UserTask).type === 'link' ? (
                  <div className="p-8 text-center bg-muted/30 rounded-2xl border border-dashed border-border mb-6">
                    <LinkIcon className="w-12 h-12 text-blue-500 mx-auto mb-4 opacity-30" />
                    <p className="text-lg font-bold mb-4">Visit external resource to continue.</p>
@@ -577,7 +577,7 @@ export default function DashboardPage() {
                  </div>
                )}
 
-               {selectedTask.type === 'quiz' && (
+               {(selectedTask as UserTask).type === 'quiz' && (
                  <div className="p-6 bg-emerald-500/5 rounded-2xl border border-emerald-500/20 mb-8">
                    <h3 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2 flex items-center gap-2">
                      <QuestionMarkCircleIcon className="w-5 h-5" /> Quiz / Assignment

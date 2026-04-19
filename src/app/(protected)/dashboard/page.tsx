@@ -80,7 +80,7 @@ interface UserTask {
   module_id: string;
   title: string;
   status: string;
-  type: string;
+  type: string; // Task type: video, link, quiz, text
   content_url?: string;
   content_body?: string;
   completed_at: string | null;

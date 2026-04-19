@@ -381,7 +381,7 @@ export default function DashboardPage() {
                     {/* Module Tasks */}
                     {(isActive || isDone) && (
                       <div className="bg-background px-6 pb-4 space-y-2">
-                        {tasks.sort((a,b) => a.title.localeCompare(b.title)).map((task) => (
+                        {tasks.sort((a,b) => a.title.localeCompare(b.title)).map((task: UserTask) => (
                           <button 
                             key={task.id}
                             onClick={() => handleTaskClick(task)}
